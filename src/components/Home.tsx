@@ -1,12 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store';
-import { increment, decrement } from '../../slices/counterSlice';
 import { Link } from 'react-router-dom';
+// Используем типизированные хуки вместо обычных
+import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { increment, decrement } from '../slices/counterSlice';
 
 const Home: React.FC = () => {
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
+  // Используем типизированные хуки для лучшей работы с TypeScript
+  const count = useAppSelector(state => state.counter.value);
+  const dispatch = useAppDispatch();
+  
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold text-blue-600">Webpack + React + Tailwind + Redux Toolkit</h1>
