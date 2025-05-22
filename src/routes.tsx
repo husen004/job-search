@@ -8,16 +8,17 @@ import About from './components/About';
 import AdvancedPosts from './components/AdvancedPosts';
 import PostsManager from './components/PostsManager';
 import JobSearch from './components/JobSearch';
+import HhJobSearch from './components/HhJobSearch';
 import AdvancedRtkQueryDemo from './components/AdvancedRtkQueryDemo';
 
-const AppRoutes: React.FC = () => {
-  return (
+const AppRoutes: React.FC = () => {  return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/advanced" element={<AdvancedPosts />} />
       <Route path="/manage" element={<PostsManager />} />
       <Route path="/jobs" element={<JobSearch />} />
+      <Route path="/headhunter" element={<HhJobSearch />} />
       <Route path="/advanced-rtk" element={<AdvancedRtkQueryDemo />} />
     </Routes>
   );
