@@ -5,21 +5,24 @@ import { Route, Routes } from 'react-router-dom';
 // Components
 import Home from './components/Home';
 import About from './components/About';
-import AdvancedPosts from './components/AdvancedPosts';
-import PostsManager from './components/PostsManager';
-import JobSearch from './components/JobSearch';
 import HhJobSearch from './components/HhJobSearch';
-import AdvancedRtkQueryDemo from './components/AdvancedRtkQueryDemo';
+import HhVacancyDetail from './components/HhVacancyDetail';
+import HhDashboard from './components/HhDashboard';
+import HhEmployerDetail from './components/HhEmployerDetail';
+import HhSavedVacancies from './components/HhSavedVacancies';
 
-const AppRoutes: React.FC = () => {  return (
+
+const AppRoutes: React.FC = () => {
+  return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/advanced" element={<AdvancedPosts />} />
-      <Route path="/manage" element={<PostsManager />} />
-      <Route path="/jobs" element={<JobSearch />} />
-      <Route path="/headhunter" element={<HhJobSearch />} />
-      <Route path="/advanced-rtk" element={<AdvancedRtkQueryDemo />} />
+      <Route path="/headhunter" element={<HhDashboard />}>
+        <Route index element={<HhJobSearch />} />
+        <Route path="saved" element={<HhSavedVacancies />} />
+        <Route path="employer/:id" element={<HhEmployerDetail />} />
+        <Route path="vacancy/:id" element={<HhVacancyDetail />} />
+      </Route>
     </Routes>
   );
 };

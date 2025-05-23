@@ -1,9 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { counterReducer } from '../features/counter';
+
 import { baseApi } from '../api/baseApi';
 
 export const rootReducer = combineReducers({
-  counter: counterReducer,
+  counter: {
+    
+  },
   // Add the generated API reducer to the store
   [baseApi.reducerPath]: baseApi.reducer,
   // Здесь можно добавить другие редьюсеры по мере роста приложения
