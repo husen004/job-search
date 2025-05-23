@@ -8,14 +8,25 @@ body {
   margin: 0;
   padding: 2rem;
 }
-h1 {
-  color: #2d72d9;
-}
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}
-#result {
-  margin-top: 1rem;
-  color: #333;
+
+@layer components {
+  .wrapper {
+    @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .wrapper-md {
+    @apply max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .wrapper-lg {
+    @apply max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page {
+    @apply flex flex-col min-h-screen pt-12.5 pb-20 gap-9;
+  }
+
+  .overlay {
+    @apply bg-radial-100 w-full h-full absolute top-0 -z-10;
+  }
 }
