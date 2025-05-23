@@ -1,5 +1,6 @@
 // Компонент для поиска вакансий через HeadHunter API
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   useSearchVacanciesQuery, 
   useGetAreasQuery, 
@@ -8,11 +9,12 @@ import {
   HH_SCHEDULE 
 } from '../api/hhApi';
 import { getErrorMessage } from '../api/baseApi';
+import { Analytics } from '../utils/analytics';
 import Loading from './Loading';
 import Error from './Error';
+import HhAdvancedFilters from './HhAdvancedFilters';
 
-const HhJobSearch: React.FC = () => {
-  // Состояние для параметров поиска
+const HhJobSearch: React.FC = () => {  // Состояние для параметров поиска
   const [searchParams, setSearchParams] = useState<HhSearchParams>({
     text: '',
     area: '1', // По умолчанию Москва
@@ -20,6 +22,9 @@ const HhJobSearch: React.FC = () => {
     page: 0,
     per_page: 10
   });
+  
+  // Состояние для отображения расширенных фильтров
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   
   // Получаем данные регионов и вакансий с помощью RTK Query
   const { data: areas, isLoading: areasLoading } = useGetAreasQuery();
@@ -30,12 +35,23 @@ const HhJobSearch: React.FC = () => {
     isFetching,
     refetch 
   } = useSearchVacanciesQuery(searchParams);
-  
-  // Обработчик формы поиска
+    // Обработчик формы поиска
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     refetch();
+    
+    // Track search event if we have results
+    if (data) {
+      Analytics.trackJobSearch(searchParams, data.found);
+    }
   };
+  
+  // Track search results when data changes
+  useEffect(() => {
+    if (data && !isLoading && !isFetching) {
+      Analytics.trackJobSearch(searchParams, data.found);
+    }
+  }, [data, isLoading, isFetching]);
   
   // Обработка изменения параметров поиска
   const handleParamChange = (key: keyof HhSearchParams, value: any) => {
@@ -88,87 +104,52 @@ const HhJobSearch: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h2 className="text-2xl font-bold mb-6">Поиск вакансий на HeadHunter</h2>
-      
-      {/* Форма поиска */}
+        {/* Форма поиска */}
       <form onSubmit={handleSearch} className="mb-6 bg-white p-4 rounded shadow">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label className="block mb-1">Поисковый запрос</label>
+        <div className="mb-4">
+          <label className="block mb-2 font-medium">Поисковый запрос</label>
+          <div className="flex">
             <input
               type="text"
               name="text"
               value={searchParams.text || ''}
               onChange={handleInputChange}
-              className="w-full p-2 border rounded"
+              className="flex-grow p-2 border rounded-l"
               placeholder="Например: React разработчик"
             />
-          </div>
-          
-          <div>
-            <label className="block mb-1">Регион</label>
-            <select
-              name="area"
-              value={searchParams.area || '1'}
-              onChange={handleInputChange}
-              className="w-full p-2 border rounded"
+            <button
+              type="submit"
+              className="bg-blue-600 text-white py-2 px-6 rounded-r hover:bg-blue-700 whitespace-nowrap"
+              disabled={isLoading || isFetching}
             >
-              {renderMainAreas()}
-            </select>
-          </div>
-          
-          <div>
-            <label className="block mb-1">Опыт работы</label>
-            <select
-              name="experience"
-              value={searchParams.experience || ''}
-              onChange={handleInputChange}
-              className="w-full p-2 border rounded"
-            >
-              <option value="">Любой опыт</option>
-              <option value={HH_EXPERIENCE.noExperience}>Нет опыта</option>
-              <option value={HH_EXPERIENCE.between1And3}>От 1 года до 3 лет</option>
-              <option value={HH_EXPERIENCE.between3And6}>От 3 до 6 лет</option>
-              <option value={HH_EXPERIENCE.moreThan6}>Более 6 лет</option>
-            </select>
-          </div>
-          
-          <div>
-            <label className="block mb-1">График работы</label>
-            <select
-              name="schedule"
-              value={searchParams.schedule || ''}
-              onChange={handleInputChange}
-              className="w-full p-2 border rounded"
-            >
-              <option value="">Любой график</option>
-              <option value={HH_SCHEDULE.fullDay}>Полный день</option>
-              <option value={HH_SCHEDULE.shift}>Сменный график</option>
-              <option value={HH_SCHEDULE.flexible}>Гибкий график</option>
-              <option value={HH_SCHEDULE.remote}>Удаленная работа</option>
-            </select>
-          </div>
-          
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              name="only_with_salary"
-              checked={searchParams.only_with_salary || false}
-              onChange={handleInputChange}
-              id="only_with_salary"
-              className="mr-2"
-            />
-            <label htmlFor="only_with_salary">Только с указанной зарплатой</label>
+              {isLoading || isFetching ? 'Поиск...' : 'Найти вакансии'}
+            </button>
           </div>
         </div>
         
-        <button
-          type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
-          disabled={isLoading || isFetching}
-        >
-          {isLoading || isFetching ? 'Поиск...' : 'Найти вакансии'}
-        </button>
+        <div className="flex justify-between items-center">
+          <button 
+            type="button" 
+            className="text-blue-600 hover:underline text-sm flex items-center"
+            onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+          >
+            {showAdvancedFilters ? '- Скрыть фильтры' : '+ Расширенный поиск'}
+          </button>
+          
+          <div className="text-sm text-gray-500">
+            {data?.found ? `Найдено вакансий: ${data.found.toLocaleString('ru-RU')}` : ''}
+          </div>
+        </div>
       </form>
+      
+      {/* Расширенные фильтры */}
+      {showAdvancedFilters && (
+        <HhAdvancedFilters 
+          filters={searchParams} 
+          onFilterChange={handleParamChange}
+          areas={areas}
+        />
+      )}
       
       {/* Обработка ошибок */}
       {error && (
@@ -191,12 +172,11 @@ const HhJobSearch: React.FC = () => {
           </div>
           
           <div className="space-y-4">
-            {data.items.map(vacancy => (
-              <div key={vacancy.id} className="bg-white p-4 rounded shadow border-l-4 border-blue-500">
+            {data.items.map(vacancy => (              <div key={vacancy.id} className="bg-white p-4 rounded shadow border-l-4 border-blue-500">
                 <h3 className="text-xl font-semibold">
-                  <a href={vacancy.alternate_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  <Link to={`/headhunter/vacancy/${vacancy.id}`} className="text-blue-600 hover:underline">
                     {vacancy.name}
-                  </a>
+                  </Link>
                 </h3>
                 
                 <div className="flex items-center mt-2">
