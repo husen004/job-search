@@ -172,3 +172,4 @@ export const HH_SCHEDULE = {
   remote: 'remote',        // Удаленная работа
   flyInFlyOut: 'flyInFlyOut', // Вахтовый метод
 };
+
