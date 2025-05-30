@@ -8,8 +8,6 @@ import About from './components/About';
 import HhJobSearch from './components/HhJobSearch';
 import HhVacancyDetail from './components/HhVacancyDetail';
 import HhDashboard from './components/HhDashboard';
-import HhEmployerDetail from './components/HhEmployerDetail';
-import HhSavedVacancies from './components/HhSavedVacancies';
 
 
 const AppRoutes: React.FC = () => {
