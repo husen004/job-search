@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-
-
 const About: React.FC = () => (
   <div className="p-4">
     <h2 className="text-xl font-semibold">About</h2>

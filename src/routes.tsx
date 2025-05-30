@@ -16,11 +16,8 @@ const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
       <Route path="/headhunter" element={<HhDashboard />}>
         <Route index element={<HhJobSearch />} />
-        <Route path="saved" element={<HhSavedVacancies />} />
-        <Route path="employer/:id" element={<HhEmployerDetail />} />
         <Route path="vacancy/:id" element={<HhVacancyDetail />} />
       </Route>
     </Routes>
