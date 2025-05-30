@@ -41,7 +41,7 @@ const HhVacancyDetail: React.FC = () => {
   };
   
   // Check if vacancy is saved when component mounts or vacancy changes
-  React.useEffect(() => {
+  useEffect(() => {
     const checkIfVacancyIsSaved = () => {
       try {
         const savedVacanciesString = localStorage.getItem('hh_saved_vacancies');

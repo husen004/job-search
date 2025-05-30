@@ -9,7 +9,7 @@ body {
   padding: 2rem;
 }
 
-@layer components {
+
   .wrapper {
     @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -29,4 +29,4 @@ body {
   .overlay {
     @apply bg-radial-100 w-full h-full absolute top-0 -z-10;
   }
-}
+

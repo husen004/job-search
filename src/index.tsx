@@ -9,21 +9,19 @@ import AppRoutes from './routes';
 const App: React.FC = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <div className="container mx-auto">
-        <header className="py-4 mb-4 border-b">
-          <h1 className="text-2xl font-bold text-blue-600">Job Search App</h1>          <nav className="mt-2">
-            <ul className="flex flex-wrap space-x-4">
-              <li><Link to="/" className="text-blue-500 hover:underline">Home</Link></li>
-              <li><Link to="/jobs" className="text-blue-500 hover:underline">Job Search</Link></li>
+      <div className="wrapper">
+        <Link to="/"><h1 className="bg-red-500">Home</h1> </Link>         
+          <nav className="mt-2">
+            <ul className="">
+              <li><Link to="/jobs" className="text-blue-500 hover:underline">Job Company</Link></li>
               <li><Link to="/headhunter" className="text-blue-500 hover:underline">HeadHunter</Link></li>
-              <li><Link to="/advanced-rtk" className="text-blue-500 hover:underline">RTK Query Demo</Link></li>
+              <li><Link to="/favorites" className="">Favorites</Link></li>
             </ul>
           </nav>
-        </header>
+      </div>
         <main>
           <AppRoutes />
         </main>
-      </div>
     </BrowserRouter>
   </Provider>
 );
