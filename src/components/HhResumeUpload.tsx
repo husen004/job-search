@@ -1,6 +1,5 @@
 // filepath: src/components/HhResumeUpload.tsx
 import React, { useState } from 'react';
-import { HeadHunterService } from '../services/hhService';
 import { Analytics } from '../utils/analytics';
 
 interface ResumeUploadProps {
