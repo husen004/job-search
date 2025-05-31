@@ -13,6 +13,7 @@ import { Analytics } from '../utils/analytics';
 import Loading from './Loading';
 import Error from './Error';
 import HhAdvancedFilters from './HhAdvancedFilters';
+import { jobSearchSchema } from '../utils/validation';
 
 const HhJobSearch: React.FC = () => {  // Состояние для параметров поиска
   const [searchParams, setSearchParams] = useState<HhSearchParams>({
@@ -26,6 +27,9 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
   // Состояние для отображения расширенных фильтров
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   
+  // Состояние для ошибок валидации формы
+  const [formError, setFormError] = useState<string | null>(null);
+  
   // Получаем данные регионов и вакансий с помощью RTK Query
   const { data: areas, isLoading: areasLoading } = useGetAreasQuery();
   const { 
@@ -38,6 +42,13 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
     // Обработчик формы поиска
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    // Validate form with Zod
+    const result = jobSearchSchema.safeParse(searchParams);
+    if (!result.success) {
+      setFormError(result.error.errors[0]?.message || 'Ошибка валидации');
+      return;
+    }
+    setFormError(null);
     refetch();
     
     // Track search event if we have results
@@ -96,7 +107,7 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
     const russia = areas.find(country => country.name === 'Россия');
     if (!russia) return <option value="1">Москва</option>;
     
-    return russia.areas.map(area => (
+    return russia.areas.map((area) => (
       <option key={area.id} value={area.id}>{area.name}</option>
     ));
   };
@@ -106,6 +117,11 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
       <h2 className="text-2xl font-bold mb-6">Поиск вакансий на HeadHunter</h2>
         {/* Форма поиска */}
       <form onSubmit={handleSearch} className="mb-6 bg-white p-4 rounded shadow">
+        {formError && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <p>{formError}</p>
+          </div>
+        )}
         <div className="mb-4">
           <label className="block mb-2 font-medium">Поисковый запрос</label>
           <div className="flex">
