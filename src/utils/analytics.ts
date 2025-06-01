@@ -11,6 +11,7 @@ export enum AnalyticsEventType {
   JobView = 'job_view',
   JobApplication = 'job_application',
   EmployerView = 'employer_view',
+  
   SaveVacancy = 'save_vacancy',
   UnsaveVacancy = 'unsave_vacancy',
 }
