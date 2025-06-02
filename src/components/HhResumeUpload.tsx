@@ -43,6 +43,7 @@ const HhResumeUpload: React.FC<ResumeUploadProps> = ({ vacancyId, onClose }) => 
     
     // Set the file for upload
     setFile(selectedFile);
+    
   };
   
   // Handle form submission
