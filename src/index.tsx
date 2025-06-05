@@ -4,6 +4,7 @@ import { BrowserRouter, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import './styles/index.css';
+import './style.css'
 import AppRoutes from './routes';
 
 const App: React.FC = () => (
