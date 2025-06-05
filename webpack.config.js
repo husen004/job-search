@@ -33,8 +33,12 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader'
+        ],
       },
     ],
   },
@@ -51,6 +55,7 @@ module.exports = {
     static: './dist',
     hot: true,
     open: true,
+    historyApiFallback: true, // Add this for React Router
   },
 
   // 7. Resolve/Alias: алиасы для удобства

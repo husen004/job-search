@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import './style.css';
+import './styles/index.css';
 import AppRoutes from './routes';
 
 const App: React.FC = () => (
