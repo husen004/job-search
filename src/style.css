@@ -2,31 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 2rem;
+@layer base {
+  body {
+    @apply bg-gray-100 text-gray-900 m-0 font-serif;
+  }
+}
+@layer utilities {
+  .text-ellipsis {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
 }
 
-
+@layer components {
   .wrapper {
-    @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1440px] lg:max-w-4xl md:max-w-3xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-
-  .wrapper-md {
-    @apply max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .wrapper-lg {
-    @apply max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .page {
-    @apply flex flex-col min-h-screen pt-12.5 pb-20 gap-9;
-  }
-
-  .overlay {
-    @apply bg-radial-100 w-full h-full absolute top-0 -z-10;
-  }
-
+}
