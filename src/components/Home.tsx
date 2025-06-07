@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
-    <div className="wrapper">
+    <div className="">
       <h1>Hero</h1>
     </div>
   );
