@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 const App: React.FC = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <div className="">
+      <div className="bg-red-500">
           <nav className="wrapper">
             <Navbar />        
           </nav>
