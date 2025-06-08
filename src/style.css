@@ -15,6 +15,10 @@
 
 @layer components {
   .wrapper {
-    @apply max-w-[1440px] lg:max-w-4xl md:max-w-3xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .navbar {
+    @apply flex flex-row items-center justify-between h-16;
   }
 }

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
-    <div className="">
-      <h1>Hero</h1>
-    </div>
+    <section className="wrapper">
+      <h1 className='flex justify-center items-center h-[100vh]'>Hero</h1>
+    </section>
   );
 };
 
