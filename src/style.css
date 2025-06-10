@@ -5,6 +5,7 @@
 @layer base {
   body {
     @apply bg-gray-100 text-gray-900 m-0 font-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif;
   }
 }
 @layer utilities {
@@ -21,4 +22,22 @@
   .navbar {
     @apply flex flex-row items-center justify-between h-16;
   }
+
+  .navbar_logo {
+    @apply flex flex-row gap-4
+  }
+
+  .navbar_ul {
+    @apply flex flex-row items-center gap-4;
+  }
+
+  .home_h1 {
+    @apply flex justify-center items-center h-[90vh] flex-nowrap
+  }
 }
+
+.global_backfround_gradient {
+  background: #000000;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(87, 199, 169, 1) 21%, rgba(41, 136, 171, 1) 61%, rgba(83, 178, 237, 1) 91%);
+}
+
