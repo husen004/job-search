@@ -31,6 +31,10 @@
     @apply flex flex-row items-center gap-4;
   }
 
+  .home_section {
+    @apply flex justify-center items-center h-[95vh]
+  }
+
   .home_h1 {
     @apply flex justify-center items-center h-[90vh] flex-nowrap
   }
