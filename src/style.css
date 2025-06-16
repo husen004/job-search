@@ -36,7 +36,7 @@
   }
 
   .home_h1 {
-    @apply flex justify-center items-center h-[90vh] flex-nowrap
+    @apply flex justify-center items-center h-[90vh]
   }
   
 }
