@@ -41,10 +41,10 @@ const HhAdvancedFilters: React.FC<AdvancedFiltersProps> = ({
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow mb-6">
-      <h3 className="text-lg font-semibold mb-4">Расширенные фильтры</h3>
+    <div className="bg-white p-4 rounded shadow">
+      <h3 className="text-xl font-semibold mb-4 text-nowrap">Расширенные фильтры</h3>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="flex flex-col justify-start gap-4 mx-4">
         {/* Region selection */}
         <div>
           <label className="block mb-1 text-sm font-medium">Регион</label>

@@ -113,7 +113,7 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="max-w-6xl mx-auto p-4">
       <h2 className="text-2xl font-bold mb-6">Поиск вакансий на HeadHunter</h2>
       {/* Форма поиска */}
       <form onSubmit={handleSearch} className="mb-6 bg-white p-4 rounded shadow">
@@ -166,31 +166,18 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
           </div>
 
 
-          <div className="flex justify-">
+          <div className="flex flex-row gap-4">
 
-            <div className="flex flex-col items-center">
-              <button
-                type="button"
-                className="text-blue-600 hover:underline text-sm flex items-center"
-                onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-              >
-                {showAdvancedFilters ? '- Скрыть фильтры' : '+ Расширенный поиск'}
-              </button>
-
-              <div className="text-sm text-gray-500">
-                {data?.found ? `Найдено вакансий: ${data.found.toLocaleString('ru-RU')}` : ''}
-              </div>
-            </div>
-
-            {showAdvancedFilters && (
+            <div>
               <HhAdvancedFilters
                 filters={searchParams}
                 onFilterChange={handleParamChange}
                 areas={areas}
               />
-            )}
+            </div>
 
-            <div>
+
+            <div className='flex flex-col gap-6'>
               {data.items.map(vacancy => (
                 <div key={vacancy.id} className="bg-white p-4 rounded shadow border-l-4 border-blue-500">
                   <h3 className="text-xl font-semibold">
