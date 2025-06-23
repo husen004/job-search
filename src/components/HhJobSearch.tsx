@@ -169,6 +169,7 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
 
           <div className="flex flex-row gap-4">
 
+
             <div>
               <HhAdvancedFilters
                 filters={searchParams}
