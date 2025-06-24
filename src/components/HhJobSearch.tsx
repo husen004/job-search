@@ -144,7 +144,7 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
         </div>
 
       </form>
-      
+
 
       {/* Обработка ошибок */}
       {error && (
@@ -233,25 +233,25 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
 
-          {/* Пагинация */}
-          <div className="mt-6 flex justify-between">
-            <button
-              onClick={() => changePage(-1)}
-              disabled={searchParams.page === 0}
-              className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
-            >
-              Предыдущая
-            </button>
-            <button
-              onClick={() => changePage(1)}
-              disabled={(searchParams.page || 0) >= (data.pages - 1)}
-              className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
-            >
-              Следующая
-            </button>
+              <div className="mt-6 flex justify-between">
+                <button
+                  onClick={() => changePage(-1)}
+                  disabled={searchParams.page === 0}
+                  className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
+                >
+                  Предыдущая
+                </button>
+                <button
+                  onClick={() => changePage(1)}
+                  disabled={(searchParams.page || 0) >= (data.pages - 1)}
+                  className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
+                >
+                  Следующая
+                </button>
+              </div>
+              
+            </div>
           </div>
         </>
       ) : data?.items && data.items.length === 0 ? (

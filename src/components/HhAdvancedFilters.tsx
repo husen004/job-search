@@ -41,7 +41,7 @@ const HhAdvancedFilters: React.FC<AdvancedFiltersProps> = ({
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow">
+    <div className="bg-white p-4 rounded-xl shadow">
       <h3 className="text-xl font-semibold mb-4 text-nowrap">Расширенные фильтры</h3>
       
       <div className="flex flex-col justify-start gap-4 mx-4">

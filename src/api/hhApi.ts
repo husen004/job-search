@@ -1,4 +1,3 @@
-// HeadHunter API client
 import { baseApi } from './baseApi';
 
 // Интерфейсы для типизации данных HeadHunter API
