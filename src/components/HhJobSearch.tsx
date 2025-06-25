@@ -212,6 +212,7 @@ const HhJobSearch: React.FC = () => {  // Состояние для параме
                       {vacancy.area.name} • {vacancy.experience.name} • {vacancy.schedule.name}
                     </div>
                   </div>
+                  
 
                   {vacancy.snippet && (
                     <div className="mt-3 text-gray-700">
