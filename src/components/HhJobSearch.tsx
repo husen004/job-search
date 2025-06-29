@@ -10,8 +10,6 @@ import {
 } from '../api/hhApi';
 import { getErrorMessage } from '../api/baseApi';
 import { Analytics } from '../utils/analytics';
-import Loading from './Loading';
-import Error from './Error';
 import HhAdvancedFilters from './HhAdvancedFilters';
 import { jobSearchSchema } from '../utils/validation';
 
