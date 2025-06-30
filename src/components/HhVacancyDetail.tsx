@@ -135,6 +135,7 @@ const HhVacancyDetail: React.FC = () => {
           Вернуться к поиску
         </Link>
       </div>
+      
     );
   }
 
