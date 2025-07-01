@@ -136,6 +136,7 @@ const HhVacancyDetail: React.FC = () => {
         </Link>
       </div>
       
+      
     );
   }
 
