@@ -85,6 +85,17 @@ export const hhApi = baseApi.injectEndpoints({
           'User-Agent': 'JobSearchApp/1.0 (example@example.com)',
         },
       }),
+      transformErrorResponse: (response) => {
+        if (response.status === 404) {
+          return { message: 'Вакансия не найдена или удалена' };
+        }
+        
+        if (response.status === 403) {
+          return { message: 'Доступ к вакансии ограничен' };
+        }
+        
+        return { message: 'Произошла ошибка при загрузке вакансии' };
+      },
       providesTags: (_, __, id) => [{ type: 'Vacancy', id }],
     }),
 
