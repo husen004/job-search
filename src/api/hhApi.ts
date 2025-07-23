@@ -160,6 +160,7 @@ export const {
   useGetEmployerByIdQuery,
 } = hhApi;
 
+
 // Полезные константы для параметров API
 export const HH_EXPERIENCE = {
   noExperience: 'noExperience',  // Нет опыта
