@@ -149,6 +149,7 @@ export const hhApi = baseApi.injectEndpoints({
   overrideExisting: false,
 });
 
+
 // Экспортируем хуки для использования в компонентах
 export const {
   useSearchVacanciesQuery,
