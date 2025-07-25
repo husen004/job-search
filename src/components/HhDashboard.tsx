@@ -4,7 +4,7 @@ import { useSearchEmployersQuery } from '../api/hhApi';
 import HhJobSearch from './HhJobSearch';
 import HhEmployers from './HhEmployers';
 import HhSavedVacancies from './HhSavedVacancies';
-import { Outlet } from 'react-router-dom';
+
 
 
 /**
