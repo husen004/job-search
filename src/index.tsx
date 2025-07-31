@@ -7,9 +7,11 @@ import './styles/index.css';
 import './style.css'
 import AppRoutes from './routes';
 import Navbar from './components/Navbar';
+import ScrollUp from './components/ScrollUp';
 
 const App: React.FC = () => (
   <Provider store={store}>
+    <ScrollUp />
     <BrowserRouter>
       <div className="bg-black">
           <nav className="wrapper">
