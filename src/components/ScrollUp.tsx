@@ -20,10 +20,10 @@ const ScrollUp: React.FC = () => {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-700 transition"
+      className='.scroll_up'
       aria-label="Scroll to top"
     >
-      
+      Up
     </button>
   );
 };
