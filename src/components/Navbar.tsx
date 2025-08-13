@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className='navbar'>
       <div className='navbar_logo'>
         <Link to={'/'}>
-          <img src={homeButton} alt='navbar_icon' />
+          <img src={homeButton} alt='navbar_icon'/>
         </Link>
 
         <Link to={'/my-resume'}>
