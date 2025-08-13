@@ -12,7 +12,7 @@ const ScrollUp: React.FC = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (!visible) return null;
@@ -20,10 +20,10 @@ const ScrollUp: React.FC = () => {
   return (
     <button
       onClick={scrollToTop}
-      className='.scroll_up'
+      className="scroll_up"
       aria-label="Scroll to top"
     >
-      Up
+      ↑ Наверх
     </button>
   );
 };
