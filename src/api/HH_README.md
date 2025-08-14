@@ -12,7 +12,6 @@ This integration allows users to search for jobs using the HeadHunter API, view 
 - **Save Vacancies**: Save interesting job postings for later review
 - **Apply to Jobs**: Upload resume and cover letter to apply for jobs
 - **Similar Vacancies**: View similar job postings for each vacancy
-- **Analytics**: Track user interactions with the job search functionality
 
 ## Components
 
