@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { store } from './store';
-import './styles/index.css';
-import AppRoutes from './routes';
-import Navbar from './components/Navbar';
-import ScrollUp from './components/ScrollUp';
-import Footer from './components/Footer';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import "./styles/index.css";
+import AppRoutes from "./routes";
+import Navbar from "./components/Navbar";
+import ScrollUp from "./components/ScrollUp";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => (
   <Provider store={store}>
@@ -16,12 +16,12 @@ const App: React.FC = () => (
         <nav className="wrapper">
           <Navbar />
         </nav>
-        <main>
-          <AppRoutes />
-        </main>
       </div>
-      <div className='bg-black'>
-        <footer className='wrapper'>
+      <main>
+        <AppRoutes />
+      </main>
+      <div className="bg-black">
+        <footer className="wrapper">
           <Footer />
         </footer>
       </div>
@@ -30,5 +30,5 @@ const App: React.FC = () => (
   </Provider>
 );
 
-const root = ReactDOM.createRoot(document.getElementById('root')!);
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<App />);

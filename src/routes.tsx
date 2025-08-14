@@ -8,6 +8,7 @@ import HhVacancyDetail from './components/HhVacancyDetail';
 import HhDashboard from './components/HhDashboard';
 import HhSavedVacancies from './components/HhSavedVacancies'; 
 import HhVacancyApply from './components/HhVacancyApply';
+import Company from './pages/Company';
 
 const AppRoutes: React.FC = () => {
   return (
