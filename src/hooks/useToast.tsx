@@ -1,38 +1,56 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 type ToastType = "success" | "error" | "info" | "warning";
 
-interface ToastOptions {
-  type?: ToastType;
-  duration?: number; // ms
+interface Toast {
+  id: number;
+  message: string;
+  type: ToastType;
+  duration: number;
 }
 
 export function useToast() {
+  const [toasts, setToasts] = useState<Toast[]>([]);
+
   const showToast = useCallback(
-    (message: string, options?: ToastOptions) => {
-      const toast = document.createElement("div");
-      toast.textContent = message;
-      toast.className = `fixed bottom-8 right-8 px-4 py-2 rounded shadow-lg z-[9999] text-white transition-all ${
-        options?.type === "error"
-          ? "bg-red-600"
-          : options?.type === "success"
-          ? "bg-green-600"
-          : options?.type === "warning"
-          ? "bg-yellow-600"
-          : "bg-blue-600"
-      }`;
-
-      document.body.appendChild(toast);
-
+    (message: string, options?: { type: ToastType; duration?: number }) => {
+      const id = Date.now() + Math.random();
+      const toast: Toast = {
+        id,
+        message,
+        type: options?.type || "info",
+        duration: options?.duration ?? 2500,
+      };
+      setToasts((prev) => [...prev, toast]);
       setTimeout(() => {
-        toast.style.opacity = "0";
-        setTimeout(() => {
-          document.body.removeChild(toast);
-        }, 300);
-      }, options?.duration ?? 2500);
+        setToasts((prev) => prev.filter((t) => t.id !== id));
+      }, toast.duration);
     },
     []
   );
 
-  return showToast;
+  // ToastList компонент для вывода тостов
+  const ToastList = () => (
+    <div className="fixed bottom-8 right-8 flex flex-col gap-2 z-[9999]">
+      {toasts.map((toast) => (
+        <div
+          key={toast.id}
+          className={`px-4 py-2 rounded shadow-lg text-white transition-all
+            ${toast.type === "error"
+              ? "bg-red-600"
+              : toast.type === "success"
+              ? "bg-green-600"
+              : toast.type === "warning"
+              ? "bg-yellow-600 text-black"
+              : "bg-blue-600"}
+          `}
+          style={{ minWidth: 200, opacity: 0.95 }}
+        >
+          {toast.message}
+        </div>
+      ))}
+    </div>
+  );
+
+  return { showToast, ToastList };
 }
