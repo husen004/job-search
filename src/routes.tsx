@@ -6,7 +6,6 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import HhVacancyDetail from './components/HhVacancyDetail';
 import HhDashboard from './components/HhDashboard';
-import HhSavedVacancies from './components/HhSavedVacancies'; 
 import HhVacancyApply from './components/HhVacancyApply';
 import Company from './pages/Company';
 
