@@ -8,7 +8,7 @@ import AppRoutes from "./routes";
 import Navbar from "./components/Navbar";
 import ScrollUp from "./components/ScrollUp";
 import Footer from "./components/Footer";
-import { ToastProvider } from "./components/ToastProvider";
+import { ToastProvider } from "./components/ui/ToastProvider";
 
 const App: React.FC = () => (
   <Provider store={store}>

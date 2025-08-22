@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { useAppToast } from '../components/ui/ToastProvider';
 
 const HhSavedVacancies = () => {
-  return (
-    <div className=''>
-        <h2 className='text-xl font-bold mb-4'>Сохраненные вакансии</h2>
-        <p>Здесь будет список ваших сохраненных вакансий.</p>
-    </div>
-  )
-}
 
-export default HhSavedVacancies
+  return (
+    <>
+      <div></div>
+    </>
+  );
+};
+
+export default HhSavedVacancies;

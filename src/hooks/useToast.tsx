@@ -1,3 +1,4 @@
+import React from "react";
 import { useCallback, useState } from "react";
 
 type ToastType = "success" | "error" | "info" | "warning";
@@ -44,7 +45,7 @@ export function useToast() {
               ? "bg-yellow-600 text-black"
               : "bg-blue-600"}
           `}
-          style={{ minWidth: 200, opacity: 0.95 }}
+          style={{ minWidth: 400, opacity: 0.95 }}
         >
           {toast.message}
         </div>
