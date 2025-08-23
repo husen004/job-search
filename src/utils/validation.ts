@@ -1,6 +1,5 @@
 import { z } from 'zod';
 
-// Example: Job Search Form Schema
 export const jobSearchSchema = z.object({
   text: z.string().min(2, 'Введите поисковый запрос'),
   area: z.string().min(1, 'Выберите регион'),

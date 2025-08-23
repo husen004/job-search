@@ -8,12 +8,12 @@ import AppRoutes from "./routes";
 import Navbar from "./components/Navbar";
 import ScrollUp from "./components/ScrollUp";
 import Footer from "./components/Footer";
-import { ToastProvider } from "./components/ui/ToastProvider";
+import Toast from "./components/Toast"; // Add this import
+
 
 const App: React.FC = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <ToastProvider>
         <div className="bg-black">
           <nav className="wrapper">
             <Navbar />
@@ -28,7 +28,7 @@ const App: React.FC = () => (
           </footer>
         </div>
         <ScrollUp />
-      </ToastProvider>
+        <Toast /> {/* Add the Toast component here */}
     </BrowserRouter>
   </Provider>
 );
