@@ -169,4 +169,37 @@ const HhResumeUpload: React.FC<ResumeUploadProps> = ({ vacancyId, onClose }) => 
   );
 };
 
+export interface ApplyToVacancyParams {
+  vacancyId: string;
+  resumeFile: File;
+  coverLetter?: string;
+}
+
+export interface ApplyResult {
+  success: boolean;
+  message?: string;
+}
+
+export class HeadHunterService {
+  static async applyToVacancy(params: ApplyToVacancyParams): Promise<ApplyResult> {
+    try {
+      // In a real implementation, this would call your backend proxy
+      // which would forward the request to HeadHunter with proper authentication
+      console.log('Applying to vacancy', params);
+      
+      // Simulate API call
+      return {
+        success: true,
+        message: 'Application submitted successfully'
+      };
+    } catch (error) {
+      console.error('Error applying to vacancy:', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Unknown error occurred'
+      };
+    }
+  }
+}
+
 export default HhResumeUpload;
