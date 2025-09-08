@@ -8,13 +8,9 @@ interface SimilarVacanciesProps {
   vacancyId: string;
 }
 
-/**
- * Component to display similar vacancies based on a reference vacancy
- */
 const HhSimilarVacancies: React.FC<SimilarVacanciesProps> = ({ vacancyId }) => {
   const { data, isLoading, error } = useGetSimilarVacanciesQuery(vacancyId);
   
-  // Format salary display
   const formatSalary = (salary: { from: number | null; to: number | null; currency: string } | null) => {
     if (!salary) return 'Зарплата не указана';
     
@@ -35,7 +31,7 @@ const HhSimilarVacancies: React.FC<SimilarVacanciesProps> = ({ vacancyId }) => {
   }
   
   // Take only first 3 similar vacancies
-  const similarVacancies = data.items.slice(0, 3);
+  const similarVacancies = data.items.slice(0, 6);
   
   return (
     <div className="mt-8">

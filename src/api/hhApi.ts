@@ -1,3 +1,4 @@
+import { Area } from 'types';
 import { baseApi } from './baseApi';
 
 // Интерфейсы для типизации данных HeadHunter API
@@ -100,7 +101,7 @@ export const hhApi = baseApi.injectEndpoints({
     }),
 
     // Получение списка регионов (для фильтра)
-    getAreas: builder.query<any[], void>({
+    getAreas: builder.query<Area[], void>({
       query: () => ({
         url: 'https://api.hh.ru/areas',
         headers: {

@@ -8,27 +8,30 @@ import AppRoutes from "./routes";
 import Navbar from "./components/Navbar";
 import ScrollUp from "./components/ScrollUp";
 import Footer from "./components/Footer";
-import Toast from "./components/Toast"; // Add this import
-
+import Toast from "./components/Toast";
 
 const App: React.FC = () => (
   <Provider store={store}>
     <BrowserRouter>
-        <div className="bg-black">
-          <nav className="wrapper">
-            <Navbar />
-          </nav>
-        </div>
-        <main>
+      <div className="bg-black">
+        <nav className="wrapper">
+          <Navbar />
+        </nav>
+      </div>
+      <main>
+        <div className="wrapper">
           <AppRoutes />
-        </main>
-        <div className="bg-black">
-          <footer className="wrapper">
-            <Footer />
-          </footer>
         </div>
-        <ScrollUp />
-        <Toast /> {/* Add the Toast component here */}
+      </main>
+      <div className="bg-black">
+        <footer className="wrapper">
+          <Footer />
+        </footer>
+      </div>
+
+      <ScrollUp />
+      <Toast /> 
+
     </BrowserRouter>
   </Provider>
 );

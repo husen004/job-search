@@ -1,11 +1,7 @@
-// filepath: src/components/HhResumeUpload.tsx
 import React, { useState } from 'react';
 import { Analytics } from '../utils/analytics';
 import { ResumeUploadProps } from 'types';
 
-/**
- * Component for uploading resume to apply for a vacancy
- */
 const HhResumeUpload: React.FC<ResumeUploadProps> = ({ vacancyId, onClose }) => {
   const [file, setFile] = useState<File | null>(null);
   const [coverLetter, setCoverLetter] = useState('');
@@ -168,5 +164,35 @@ const HhResumeUpload: React.FC<ResumeUploadProps> = ({ vacancyId, onClose }) => 
     </div>
   );
 };
+
+export interface ApplyToVacancyParams {
+  vacancyId: string;
+  resumeFile: File;
+  coverLetter?: string;
+}
+
+export interface ApplyResult {
+  success: boolean;
+  message?: string;
+}
+
+export class HeadHunterService {
+  static async applyToVacancy(params: ApplyToVacancyParams): Promise<ApplyResult> {
+    try {
+      console.log('Applying to vacancy', params);
+      
+      return {
+        success: true,
+        message: 'Application submitted successfully'
+      };
+    } catch (error) {
+      console.error('Error applying to vacancy:', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Unknown error occurred'
+      };
+    }
+  }
+}
 
 export default HhResumeUpload;

@@ -24,6 +24,5 @@ const localStorageMock: Storage = {
 };
 global.localStorage = localStorageMock;
 
-// Suppress console.error and console.warn in tests
 global.console.error = jest.fn();
 global.console.warn = jest.fn();
