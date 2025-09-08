@@ -152,11 +152,11 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer_link">
         <div className="footer_list">
-          <h1 className="text-2xl">HeadHunter</h1>
+          <h1 className="text-xl bg-slate-600 p-2 rounded-xl text-center">HeadHunter</h1>
 
           {HH_routes.map((path, index) => (
-            <ul key={index}>
-              <a href={path.route}>
+            <ul key={index} className="footer_list-text">
+              <a href={path.route}>   
                 <li>{path.label}</li>
               </a>
             </ul>
@@ -164,10 +164,10 @@ export default function Footer() {
         </div>
 
         <div className="footer_list">
-          <h1 className="text-2xl">Соискателям</h1>
+          <h1 className="text-xl bg-slate-600 p-2 rounded-xl text-center">Соискателям</h1>
 
           {HH_information.map((path, index) => (
-            <ul key={index}>
+            <ul key={index} className="footer_list-text">
               <a href={path.route}>
                 <li>{path.label}</li>
               </a>
@@ -176,10 +176,10 @@ export default function Footer() {
         </div>
 
         <div className="footer_list">
-          <h1 className="text-2xl">Новости и статьи</h1>
+          <h1 className="text-xl bg-slate-600 p-2 rounded-xl text-center">Новости и статьи</h1>
 
           {HH_news.map((path, index) => (
-            <ul key={index}>
+            <ul key={index} className="footer_list-text">
               <a href={path.route}>
                 <li>{path.label}</li>
               </a>
@@ -188,10 +188,10 @@ export default function Footer() {
         </div>
 
         <div className="footer_list"> 
-          <h1 className="text-2xl">Молодым специалистам</h1>
+          <h1 className="text-xl bg-slate-600 p-2 rounded-xl text-center">Молодым специалистам</h1>
 
           {HH_social.map((path, index) => (
-            <ul key={index}>
+            <ul key={index} className="footer_list-text">
               <a href={path.route}>
                 <li>{path.label}</li>
               </a>
