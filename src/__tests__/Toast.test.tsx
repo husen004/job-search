@@ -5,6 +5,5 @@ import Toast from '../components/Toast';
 
 test('renders Toast component', () => {
   render(<Toast />);
-  // Add your assertions here
   expect(screen.getByRole('status')).toBeInTheDocument();
 });

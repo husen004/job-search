@@ -1,11 +1,7 @@
-// filepath: src/components/HhResumeUpload.tsx
 import React, { useState } from 'react';
 import { Analytics } from '../utils/analytics';
 import { ResumeUploadProps } from 'types';
 
-/**
- * Component for uploading resume to apply for a vacancy
- */
 const HhResumeUpload: React.FC<ResumeUploadProps> = ({ vacancyId, onClose }) => {
   const [file, setFile] = useState<File | null>(null);
   const [coverLetter, setCoverLetter] = useState('');
@@ -183,11 +179,8 @@ export interface ApplyResult {
 export class HeadHunterService {
   static async applyToVacancy(params: ApplyToVacancyParams): Promise<ApplyResult> {
     try {
-      // In a real implementation, this would call your backend proxy
-      // which would forward the request to HeadHunter with proper authentication
       console.log('Applying to vacancy', params);
       
-      // Simulate API call
       return {
         success: true,
         message: 'Application submitted successfully'

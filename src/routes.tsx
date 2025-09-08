@@ -1,8 +1,7 @@
-// Application routes configuration
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-// Components
+
 import Home from './components/Home';
 import HhVacancyDetail from './components/HhVacancyDetail';
 import HhDashboard from './components/HhDashboard';

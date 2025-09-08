@@ -1,11 +1,6 @@
-// Custom middleware for RTK Query and Redux
 import { isRejectedWithValue, Middleware } from '@reduxjs/toolkit';
 import { isRtkQueryError, getErrorMessage } from './baseApi';
 
-/**
- * RTK Query error logging middleware
- * Logs all rejected RTK Query requests to console
- */
 export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {
   // Check if the action is an RTK Query error
   if (isRejectedWithValue(action)) {
@@ -26,10 +21,6 @@ export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {
   return next(action);
 };
 
-/**
- * Cache persistence middleware
- * Saves RTK Query cache to localStorage
- */
 export const cachePersistMiddleware: Middleware = ({ getState }) => (next) => (action) => {
   const result = next(action);
   

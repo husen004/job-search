@@ -9,7 +9,6 @@ import {
   HH_SCHEDULE,
 } from "../api/hhApi";
 import { getErrorMessage } from "../api/baseApi";
-import { Analytics } from "../utils/analytics";
 import HhAdvancedFilters from "./HhAdvancedFilters";
 import { jobSearchSchema } from "../utils/validation";
 import { Area } from "types";
@@ -24,8 +23,6 @@ const HhJobSearch: React.FC = () => {
     per_page: 10,
   });
 
-  // Состояние для отображения расширенных фильтров
-  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
 
   // Состояние для ошибок валидации формы
   const [formError, setFormError] = useState<string | null>(null);
