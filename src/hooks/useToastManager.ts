@@ -16,7 +16,6 @@ export const useToastManager = () => {
 
     dispatch(addToast(toast));
     
-    // Automatically remove toast after duration
     setTimeout(() => {
       dispatch(removeToast(Date.now()));
     }, toast.duration);
