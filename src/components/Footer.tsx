@@ -146,7 +146,7 @@ const HH_social = [
 
 export default function Footer() {
 
-    const currentYear = Date.now()
+    const currentYear = new Date().getFullYear()
 
   return (
     <footer className="footer">
