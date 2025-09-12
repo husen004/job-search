@@ -2,7 +2,7 @@ import React from 'react'
 
 const Support = () => {
   return (
-    <div>Support</div>
+    <div className='h-[100vh]'>Support</div>
   )
 }
 

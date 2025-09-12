@@ -125,12 +125,23 @@ export const hhApi = baseApi.injectEndpoints({
     }),
     
     // Получение списка работодателей
-    searchEmployers: builder.query<any, { text: string; page?: number; per_page?: number }>({
+    getTopEmployers: builder.query<any, any>({
       query: (params) => ({
-        url: 'https://api.hh.ru/employers',
-        params,
-        headers: {
-          'User-Agent': 'JobSearchApp/1.0 (example@example.com)',
+        url: 'employers',
+        params: {
+          ...params,
+          only_with_vacancies: true,
+          sort_by: 'by_vacancies_open'
+        },
+      }),
+      providesTags: ['Employers'],
+    }),
+
+    searchEmployers: builder.query<any, any>({
+      query: (params) => ({
+        url: 'employers',
+        params: {
+          ...params
         },
       }),
       providesTags: ['Employers'],
@@ -138,12 +149,7 @@ export const hhApi = baseApi.injectEndpoints({
     
     // Получение информации о работодателе
     getEmployerById: builder.query<any, string>({
-      query: (id) => ({
-        url: `https://api.hh.ru/employers/${id}`,
-        headers: {
-          'User-Agent': 'JobSearchApp/1.0 (example@example.com)',
-        },
-      }),
+      query: (id) => `employers/${id}`,
       providesTags: (_, __, id) => [{ type: 'Employer', id }],
     }),
   }),
@@ -156,9 +162,10 @@ export const {
   useSearchVacanciesQuery,
   useGetVacancyByIdQuery,
   useGetAreasQuery,
-  useGetSimilarVacanciesQuery,
   useSearchEmployersQuery,
   useGetEmployerByIdQuery,
+  useGetSimilarVacanciesQuery,
+  useGetTopEmployersQuery, // Add this line
 } = hhApi;
 
 

@@ -11,4 +11,14 @@ export const jobSearchSchema = z.object({
   period: z.union([z.number(), z.nan()]).optional(),
 });
 
+// New company search validation schema
+export const companySearchSchema = z.object({
+  text: z.string().min(3, 'Введите минимум 3 символа для поиска компании'),
+  per_page: z.number().min(1).max(100).default(20)
+});
+
+// Company ID validation
+export const companyIdSchema = z.string().min(1, 'ID компании не может быть пустым');
+
 export type JobSearchFormValues = z.infer<typeof jobSearchSchema>;
+export type CompanySearchFormValues = z.infer<typeof companySearchSchema>;
