@@ -175,8 +175,6 @@ const Company: React.FC = () => {
         
         {isLoadingTop ? (
           <Loading message="Загрузка списка работодателей..." />
-        ) : topError ? (
-          <Error message={getErrorMessage(topError)} />
         ) : topEmployers?.items && topEmployers.items.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {topEmployers.items.map(employer => renderEmployerCard(employer))}

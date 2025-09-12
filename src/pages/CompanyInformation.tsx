@@ -22,7 +22,7 @@ const CompanyInformation: React.FC = () => {
     isLoading: isLoadingVacancies,
     error: vacanciesError
   } = useSearchVacanciesQuery({
-    employer_id: id,
+    employerId: id,
     per_page: 10,
     page: 0
   }, { skip: !id });

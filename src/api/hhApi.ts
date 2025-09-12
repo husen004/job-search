@@ -60,6 +60,39 @@ export interface HhSearchParams {
   per_page?: number;  // Количество вакансий на странице
 }
 
+export interface HhEmployer {
+  id: string;
+  name: string;
+  url: string;
+  alternate_url: string;
+  logo_urls?: {
+    original?: string;
+    '90'?: string;
+    '240'?: string;
+  };
+  open_vacancies: number;
+  trusted: boolean;
+  area?: {
+    id: string;
+    name: string;
+  };
+  industries?: Array<{
+    id: string;
+    name: string;
+  }>;
+  company_size?: string;
+  site_url?: string;
+  description?: string;
+}
+
+export interface HhEmployerResponse {
+  items: HhEmployer[];
+  found: number;
+  pages: number;
+  per_page: number;
+  page: number;
+}
+
 // Создаем API для работы с HeadHunter
 export const hhApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -125,31 +158,42 @@ export const hhApi = baseApi.injectEndpoints({
     }),
     
     // Получение списка работодателей
-    getTopEmployers: builder.query<any, any>({
+    getTopEmployers: builder.query<HhEmployerResponse, any>({
       query: (params) => ({
-        url: 'employers',
+        url: 'https://api.hh.ru/employers',  // Add full URL path
         params: {
           ...params,
           only_with_vacancies: true,
           sort_by: 'by_vacancies_open'
         },
+        headers: {  // Add headers
+          'User-Agent': 'JobSearchApp/1.0 (example@example.com)',
+        },
       }),
       providesTags: ['Employers'],
     }),
 
-    searchEmployers: builder.query<any, any>({
+    searchEmployers: builder.query<HhEmployerResponse, any>({
       query: (params) => ({
-        url: 'employers',
+        url: 'https://api.hh.ru/employers',  // Add full URL path
         params: {
           ...params
+        },
+        headers: {  // Add headers
+          'User-Agent': 'JobSearchApp/1.0 (example@example.com)',
         },
       }),
       providesTags: ['Employers'],
     }),
     
     // Получение информации о работодателе
-    getEmployerById: builder.query<any, string>({
-      query: (id) => `employers/${id}`,
+    getEmployerById: builder.query<HhEmployer, string>({
+      query: (id) => ({
+        url: `https://api.hh.ru/employers/${id}`,  // Use complete URL
+        headers: {  // Add headers
+          'User-Agent': 'JobSearchApp/1.0 (example@example.com)',
+        },
+      }),
       providesTags: (_, __, id) => [{ type: 'Employer', id }],
     }),
   }),
@@ -165,7 +209,7 @@ export const {
   useSearchEmployersQuery,
   useGetEmployerByIdQuery,
   useGetSimilarVacanciesQuery,
-  useGetTopEmployersQuery, // Add this line
+  useGetTopEmployersQuery, 
 } = hhApi;
 
 
