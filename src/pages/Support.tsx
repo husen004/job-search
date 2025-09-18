@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const Support: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  
-  // Support categories
-  const categories = [
-    { id: 'account', icon: '👤', title: 'Аккаунт', color: 'bg-blue-100 text-blue-800' },
-    { id: 'resume', icon: '📄', title: 'Резюме', color: 'bg-green-100 text-green-800' },
-    { id: 'search', icon: '🔍', title: 'Поиск вакансий', color: 'bg-purple-100 text-purple-800' },
-    { id: 'applications', icon: '✉️', title: 'Отклики', color: 'bg-yellow-100 text-yellow-800' },
-    { id: 'employers', icon: '🏢', title: 'Работодателям', color: 'bg-red-100 text-red-800' },
-    { id: 'technical', icon: '🔧', title: 'Технические проблемы', color: 'bg-gray-100 text-gray-800' },
-  ];
-  
-  // FAQ items
-  const faqItems = [
+const categories = [
+  { id: 'account', icon: '👤', title: 'Аккаунт', color: 'bg-blue-100 text-blue-800' },
+  { id: 'resume', icon: '📄', title: 'Резюме', color: 'bg-green-100 text-green-800' },
+  { id: 'search', icon: '🔍', title: 'Поиск вакансий', color: 'bg-purple-100 text-purple-800' },
+  { id: 'applications', icon: '✉️', title: 'Отклики', color: 'bg-yellow-100 text-yellow-800' },
+  { id: 'employers', icon: '🏢', title: 'Работодателям', color: 'bg-red-100 text-red-800' },
+  { id: 'technical', icon: '🔧', title: 'Технические проблемы', color: 'bg-gray-100 text-gray-800' },
+];
+
+ const faqItems = [
     {
       question: 'Как создать аккаунт на платформе?',
       answer: 'Для создания аккаунта нажмите кнопку "Регистрация" в правом верхнем углу экрана. Заполните необходимую информацию и подтвердите свой email. После этого вы сможете войти в систему, используя свои учетные данные.',
@@ -59,6 +52,12 @@ const Support: React.FC = () => {
       category: 'account'
     },
   ];
+
+const Support: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+ 
   
   // Animation variants
   const containerVariants = {
