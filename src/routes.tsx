@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 
-import Home from './components/Home';
+import Home from './pages/Home';
 import HhVacancyDetail from './components/HhVacancyDetail';
 import HhDashboard from './components/HhDashboard';
 import HhVacancyApply from './components/HhVacancyApply';
